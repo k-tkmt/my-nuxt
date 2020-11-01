@@ -1,34 +1,29 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        my-nuxt
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div>
+    <h1>Todo リスト</h1>
+    <table>
+      <tr><th>内容</th><th>完了</th><th>追加日</th></tr>
+      <tr v-for="(todo, i) in todos" :key="i">
+        <td>{{i + 1}}</td>
+        <td>{{todo.title}}</td>
+        <td>{{todo.done}}</td>
+        <td>{{todo.created_at}}</td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      todos: [
+        { title: '歯磨き', done: false, created_at: new Date() },
+        { title: '宿題', done: false, created_at: new Date() },
+      ]
+    }
+  }
+}
 </script>
 
 <style>
